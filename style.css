@@ -1,0 +1,77 @@
+main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-inline: 20px;
+}
+
+.wrapper:hover .box img {
+  filter: grayscale(100%);
+}
+
+.wrapper:hover .box:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.03);
+}
+
+.box {
+   width: clamp(110px, 12vw, 180px);
+  height: clamp(110px, 12vw, 180px);
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: filter 0.35s ease, transform 0.35s ease;
+}
+
+.title {
+  text-align: center;
+  font-size: clamp(28px, 6vw, 70px);
+  margin-top: 0;
+  letter-spacing: 12px;
+  animation: fadeUp 1.5s ease forwards;
+  opacity: 0;
+}
+
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translate(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@media (max-width: 768px) {
+    .wrapper{ gap: 14px}
+    .box{ width: clamp(100px, 16vw, 160px);
+          height: clamp(100px, 16vw, 160px);
+    }
+    .title {letter-spacing: 8px;}
+}
+
+@media (max-width: 480px) {
+  .wrapper { gap: 10px; }
+  .box { width: clamp(90px, 20vw, 140px); height: clamp(90px, 20vw, 140px); }
+  .title { font-size: clamp(20px, 10vw, 36px); }
+}
